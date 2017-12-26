@@ -2,11 +2,15 @@
 
 namespace Revolution\OpenBD;
 
+use Illuminate\Support\Traits\Macroable;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
 class OpenBD implements OpenBDInterface
 {
+    use Macroable;
+
     /**
      * @var string
      */
