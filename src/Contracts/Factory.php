@@ -1,10 +1,10 @@
 <?php
 
-namespace Revolution\OpenBD;
+namespace Revolution\OpenBD\Contracts;
 
 use GuzzleHttp\ClientInterface;
 
-interface OpenBDInterface
+interface Factory
 {
     /**
      * @param array $isbn
@@ -28,14 +28,14 @@ interface OpenBDInterface
      *
      * @return $this
      */
-    public function endpoint(string $endpoint): OpenBDInterface;
+    public function endpoint(string $endpoint): Factory;
 
     /**
      * @param ClientInterface $http
      *
      * @return $this
      */
-    public function setHttpClient(ClientInterface $http): OpenBDInterface;
+    public function setHttpClient(ClientInterface $http): Factory;
 
     /**
      * @return ClientInterface

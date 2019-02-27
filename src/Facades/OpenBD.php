@@ -4,7 +4,7 @@ namespace Revolution\OpenBD\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-use Revolution\OpenBD\OpenBDInterface;
+use Revolution\OpenBD\Contracts\Factory;
 
 class OpenBD extends Facade
 {
@@ -15,6 +15,6 @@ class OpenBD extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return OpenBDInterface::class;
+        return Factory::class;
     }
 }

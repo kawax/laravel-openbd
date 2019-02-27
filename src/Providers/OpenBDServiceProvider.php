@@ -3,19 +3,13 @@
 namespace Revolution\OpenBD\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 use Revolution\OpenBD\OpenBD;
-use Revolution\OpenBD\OpenBDInterface;
+use Revolution\OpenBD\Contracts\Factory;
 
-class OpenBDServiceProvider extends ServiceProvider
+class OpenBDServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Boot the service provider.
      */
@@ -31,7 +25,7 @@ class OpenBDServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(OpenBDInterface::class, function ($app) {
+        $this->app->singleton(Factory::class, function ($app) {
             return new OpenBD();
         });
     }
@@ -43,6 +37,6 @@ class OpenBDServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [OpenBDInterface::class];
+        return [Factory::class];
     }
 }

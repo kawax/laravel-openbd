@@ -7,7 +7,9 @@ use Illuminate\Support\Traits\Macroable;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
-class OpenBD implements OpenBDInterface
+use Revolution\OpenBD\Contracts\Factory;
+
+class OpenBD implements Factory
 {
     use Macroable;
 
@@ -90,7 +92,7 @@ class OpenBD implements OpenBDInterface
      *
      * @return $this
      */
-    public function endpoint(string $endpoint): OpenBDInterface
+    public function endpoint(string $endpoint): Factory
     {
         $this->endpoint = $endpoint;
 
@@ -102,7 +104,7 @@ class OpenBD implements OpenBDInterface
      *
      * @return $this
      */
-    public function setHttpClient(ClientInterface $http): OpenBDInterface
+    public function setHttpClient(ClientInterface $http): Factory
     {
         $this->http = $http;
 
