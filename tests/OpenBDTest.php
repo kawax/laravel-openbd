@@ -16,7 +16,7 @@ class OpenBDTest extends TestCase
      */
     protected $openbd;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -24,19 +24,20 @@ class OpenBDTest extends TestCase
     }
 
     /**
-     * @param string $body
+     * @param  string  $body
      */
     public function setClientHandler(string $body)
     {
-        $mock = new MockHandler([
-            new Response(200, [], $body),
-        ]);
+        $mock = new MockHandler(
+            [
+                new Response(200, [], $body),
+            ]
+        );
 
         $handler = HandlerStack::create($mock);
         $client = new Client(['handler' => $handler]);
 
-        $this->openbd = new OpenBD();
-        $this->openbd->setHttpClient($client);
+        $this->openbd = new OpenBD($client);
     }
 
     public function testInstance()
@@ -46,7 +47,7 @@ class OpenBDTest extends TestCase
 
     public function testGet()
     {
-        $this->setClientHandler(file_get_contents(__DIR__ . '/stubs/get.json'));
+        $this->setClientHandler(file_get_contents(__DIR__.'/stubs/get.json'));
 
         $response = $this->openbd->get(['978-4-7808-0204-7']);
 
@@ -57,7 +58,7 @@ class OpenBDTest extends TestCase
 
     public function testConverge()
     {
-        $this->setClientHandler(file_get_contents(__DIR__ . '/stubs/coverage.json'));
+        $this->setClientHandler(file_get_contents(__DIR__.'/stubs/coverage.json'));
 
         $response = $this->openbd->coverage();
 
@@ -69,7 +70,7 @@ class OpenBDTest extends TestCase
 
     public function testSchema()
     {
-        $this->setClientHandler(file_get_contents(__DIR__ . '/stubs/schema.json'));
+        $this->setClientHandler(file_get_contents(__DIR__.'/stubs/schema.json'));
 
         $response = $this->openbd->schema();
 

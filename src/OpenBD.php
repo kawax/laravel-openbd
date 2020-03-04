@@ -25,14 +25,16 @@ class OpenBD implements Factory
 
     /**
      * OpenBD constructor.
+     *
+     * @param  ClientInterface  $client
      */
-    public function __construct()
+    public function __construct(ClientInterface $client)
     {
-        $this->http = new Client();
+        $this->http = $client;
     }
 
     /**
-     * @param array $isbn
+     * @param  array  $isbn
      *
      * @return array
      */
@@ -54,14 +56,14 @@ class OpenBD implements Factory
                     'isbn' => $isbns,
                 ],
             ];
-            $res = $this->http->post($this->endpoint . 'get', $options);
+            $res = $this->http->post($this->endpoint.'get', $options);
         } else {
             $options = [
                 'query' => [
                     'isbn' => $isbns,
                 ],
             ];
-            $res = $this->http->get($this->endpoint . 'get', $options);
+            $res = $this->http->get($this->endpoint.'get', $options);
         }
 
         return json_decode($res->getBody(), true);
@@ -72,7 +74,7 @@ class OpenBD implements Factory
      */
     public function coverage(): array
     {
-        $res = $this->http->get($this->endpoint . 'coverage');
+        $res = $this->http->get($this->endpoint.'coverage');
 
         return json_decode($res->getBody(), true);
     }
@@ -82,13 +84,13 @@ class OpenBD implements Factory
      */
     public function schema(): array
     {
-        $res = $this->http->get($this->endpoint . 'schema');
+        $res = $this->http->get($this->endpoint.'schema');
 
         return json_decode($res->getBody(), true);
     }
 
     /**
-     * @param string $endpoint
+     * @param  string  $endpoint
      *
      * @return $this
      */
@@ -100,7 +102,7 @@ class OpenBD implements Factory
     }
 
     /**
-     * @param ClientInterface $http
+     * @param  ClientInterface  $http
      *
      * @return $this
      */
