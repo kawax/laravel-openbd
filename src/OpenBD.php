@@ -2,11 +2,9 @@
 
 namespace Revolution\OpenBD;
 
-use Illuminate\Support\Traits\Macroable;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-
+use Illuminate\Support\Traits\Macroable;
 use Revolution\OpenBD\Contracts\Factory;
 
 class OpenBD implements Factory
