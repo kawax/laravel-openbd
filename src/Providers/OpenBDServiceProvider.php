@@ -2,13 +2,11 @@
 
 namespace Revolution\OpenBD\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Support\DeferrableProvider;
-
 use GuzzleHttp\Client;
-
-use Revolution\OpenBD\OpenBD;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
 use Revolution\OpenBD\Contracts\Factory;
+use Revolution\OpenBD\OpenBD;
 
 class OpenBDServiceProvider extends ServiceProvider implements DeferrableProvider
 {

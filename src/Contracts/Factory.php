@@ -28,14 +28,14 @@ interface Factory
      *
      * @return $this
      */
-    public function endpoint(string $endpoint): Factory;
+    public function endpoint(string $endpoint): self;
 
     /**
      * @param ClientInterface $http
      *
      * @return $this
      */
-    public function setHttpClient(ClientInterface $http): Factory;
+    public function setHttpClient(ClientInterface $http): self;
 
     /**
      * @return ClientInterface

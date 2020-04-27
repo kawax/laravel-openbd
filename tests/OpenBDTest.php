@@ -1,13 +1,11 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-use Revolution\OpenBD\OpenBD;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\TestCase;
+use Revolution\OpenBD\OpenBD;
 
 class OpenBDTest extends TestCase
 {
